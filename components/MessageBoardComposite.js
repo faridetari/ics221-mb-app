@@ -12,7 +12,10 @@ const MessageboardComposite = () =>{
         { id: "6", myName: "Sarah", mySentence: "I heart React" }
       ]);
       const addNewMessage = (values) => {
-        
+        console.log(values);
+        values.id = messages.length;
+        messages.unshift(values);
+        console.log(messages);
         };
         return (
             <>
