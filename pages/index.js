@@ -2,7 +2,7 @@ import Head from "next/head";
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import MessageBoard from '@/components/MessageBoard'
-
+import { Container, Row, Col } from 'react-bootstrap'
 
 export default function Home() {
   return (

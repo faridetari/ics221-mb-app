@@ -1,6 +1,7 @@
 import MessageBoardItem from '@/components/MessageBoardItem'
+import Table from 'react-bootstrap/Table'
 const MessageBoard= () => {
-    const { Table } = ReactBootstrap;
+    
     const MyList= [
     {id:"1",myName:"Bill", mySentence:"Hi All!"},
     {id:"2",myName:"Ann", mySentence:"ICS 221 is fun!"},
