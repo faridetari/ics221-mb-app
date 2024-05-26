@@ -3,6 +3,10 @@ import { Formik } from 'formik';
 import * as yup from "yup";
 
 const schema = yup.object().shape({
+  name: yup
+    .string()
+    .trim()
+    .required('A name is required.'),
   msgText: yup
     .string()
     .trim()
@@ -12,22 +16,13 @@ const schema = yup.object().shape({
 });
 
 const NewMessageForm = ({ addNewMessage }) => {
-  
-  const handleFormData = ( values, { resetForm, setSubmitting }) => {
-      /* addNewMessage(values)
-     * This is a function that needs to be passed to 
-     * this Component and implemented in the Parent.
-     * values will contain the data this Component 
-     * collected from the Form and will be passed to
-     * the Parent Component via this function.
-     */
+
+  const handleFormData = (values, { resetForm, setSubmitting }) => {
     addNewMessage(values);
-    // reset the Form to prevent a double submit
     resetForm();
-    // sets isSubmitting to false to finish submission
     setSubmitting(false);
   }
-  
+
   return (
     <Card className="mb-3">
       <Card.Body>
@@ -35,7 +30,7 @@ const NewMessageForm = ({ addNewMessage }) => {
         <Formik
           validationSchema={schema}
           onSubmit={handleFormData}
-          initialValues={{ msgText: '' }}
+          initialValues={{ name: '', msgText: '' }}
         >
           {({
             handleSubmit,
@@ -47,6 +42,20 @@ const NewMessageForm = ({ addNewMessage }) => {
           }) => (
             <Form noValidate onSubmit={handleSubmit}>
               <Row className="align-items-center">
+                <Form.Group as={Col} md={9} controlId="name">
+                  <Form.Label>Enter Name:</Form.Label>
+                  <Form.Control
+                    placeholder="Your name"
+                    value={values.name}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    isValid={touched.name && !errors.name}
+                    isInvalid={touched.name && errors.name}
+                  />
+                  <Form.Control.Feedback type="invalid">
+                    {errors.name}
+                  </Form.Control.Feedback>
+                </Form.Group>
                 <Form.Group as={Col} md={9} controlId="msgText">
                   <Form.Label>Enter Message:</Form.Label>
                   <Form.Control
@@ -58,7 +67,7 @@ const NewMessageForm = ({ addNewMessage }) => {
                     isInvalid={touched.msgText && errors.msgText}
                   />
                   <Form.Control.Feedback type="invalid">
-                    {errors.messageText}
+                    {errors.msgText}
                   </Form.Control.Feedback>
                 </Form.Group>
                 <Col>

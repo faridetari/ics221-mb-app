@@ -1,10 +1,10 @@
-import MessageBoardItem from '@/components/MessageBoardItem'
-import Table from 'react-bootstrap/Table'
-const MessageBoard= ({messages}) => {
-    
-    
-  return(
-    <Table striped border hover >
+import MessageBoardItem from '@/components/MessageBoardItem';
+import React from 'react';
+import Table from 'react-bootstrap/Table';
+
+const MessageBoard = ({ messages }) => {
+  return (
+    <Table striped bordered hover>
       <thead>
         <tr>
           <th>#</th>
@@ -13,11 +13,12 @@ const MessageBoard= ({messages}) => {
         </tr>
       </thead>
       <tbody>
-        {messages.map(item => (
-          <MessageBoardItem key={item.id} {...item} />
+        {messages.map((item, index) => (
+          <MessageBoardItem key={item.id} {...item} msgNum={index + 1} />
         ))}
       </tbody>
     </Table>
-      )
+  );
 }
+
 export default MessageBoard;

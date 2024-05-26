@@ -1,10 +1,13 @@
-const MessageBoardItem = ({id,myName,mySentence}) => {
-    return(
+import React from 'react';
+
+const MessageBoardItem = ({ id, myName, mySentence, msgNum }) => {
+  return (
     <tr>
-      <td>{id}</td>
+      <td>{msgNum}</td>
       <td>{myName}</td>
       <td>{mySentence}</td>
     </tr>
   );
-  }
-  export default MessageBoardItem;
+}
+
+export default MessageBoardItem;
