@@ -3,6 +3,7 @@ import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import MessageBoard from '@/components/MessageBoard'
 import { Container, Row, Col } from 'react-bootstrap'
+import MessageboardComposite from "@/components/MessageBoardComposite";
 
 export default function Home() {
   return (
@@ -21,7 +22,7 @@ export default function Home() {
 </Row>
 <Row className=" justify-content-center">
 <Col  lg={8}>
-  <MessageBoard/>
+  <MessageboardComposite/>
 </Col>
 </Row>
 <Row className=" justify-content-center">
